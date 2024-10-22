@@ -1,29 +1,29 @@
 #include <stdio.h>
 
-float calculateTemperatureChange(float t, float T, float G)
+double calculateTemperatureChange(double t, double T, double G)
 {
 	if (t == 0) return T;
-	int ans;
+	double ans;
 	T = T*G;
 	ans = T/30;
 	ans = ans/t;
 	return ans; //updated
 }
 
-float calculateOxygenChange(float t, float O)
+double calculateOxygenChange(double t, double O)
 {
 	if (t == 0) return O;
-	int ans;
+	double ans;
 	O++; O = O*O;
 	ans = 5/O;
 	ans = ans/t;
 	return ans; //updated
 }
 
-float calculateWaterChange(float t, float W, float O, float T)
+double calculateWaterChange(double t, double W, double O, double T)
 {
 	if (t == 0) return W;
-	int ans;
+	double ans;
 	T -= 200; T = T/118;
 	T = T*T*T;
 	W = W/6;
@@ -33,22 +33,22 @@ float calculateWaterChange(float t, float W, float O, float T)
 	return ans; //updated
 }
 
-float calculateCarbonChange(float t, float C, float O)
+double calculateCarbonChange(double t, double C, double O)
 {
 	if (t == 0) return C;
-	int ans;
+	double ans;
 	C = C/50;
 	ans = C-O;
 	ans = ans/t;
 	return ans; //updated
 }
 
-float calculateGreenhouseChange(float t, float G, float C, float O, 
-	float T)
+double calculateGreenhouseChange(double t, double G, double C, double O, 
+	double T)
 {
 	if (t == 0) return G;
-	int ans;
-	int x = C+O;
+	double ans;
+	double x = C+O;
 	x = x*-1;
 	x = x/15;
 	T = T/300;
@@ -59,26 +59,26 @@ float calculateGreenhouseChange(float t, float G, float C, float O,
 
 int main(int argc, char **argv)
 {
-	float time = 0;			// in Gyr
-	float temperature = 230;	// in Kelvin
+	double time = 0;			// in Gyr
+	double temperature = 230;	// in Kelvin
 
-	float greenhouseGases = 10;// These values are all
-	float water = 0.005;		// relative to Earth
-	float carbon = 25;
-	float oxygen = 0.01;
+	double greenhouseGases = 10;// These values are all
+	double water = 0.005;		// relative to Earth
+	double carbon = 25;
+	double oxygen = 0.01;
 	
 	int maxCalculations = 5;
 	
 	for (int i = 0; i <= maxCalculations; i++)
 	{
 		time = i;
-		float T = calculateTemperatureChange(time, temperature, 
+		double T = calculateTemperatureChange(time, temperature, 
 			greenhouseGases);
-		float G = calculateGreenhouseChange(time, greenhouseGases, carbon, 
+		double G = calculateGreenhouseChange(time, greenhouseGases, carbon, 
 			oxygen, temperature);
-		float W = calculateWaterChange(time, water, oxygen, temperature);
-		float C = calculateCarbonChange(time, carbon, oxygen);
-		float O = calculateOxygenChange(time, oxygen);
+		double W = calculateWaterChange(time, water, oxygen, temperature);
+		double C = calculateCarbonChange(time, carbon, oxygen);
+		double O = calculateOxygenChange(time, oxygen);
 		
 		printf("\n%f Gyr:\n", time);
 		printf("Oxygen: %f\n", O);
