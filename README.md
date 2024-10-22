@@ -6,7 +6,6 @@ it on Github in case anyone's curious. :3
 **Please use caution when using this!** This could be a fictional scenario I was handed, 
 and my math could easily be wrong. I wrote this in like, an hour.
 
-Also, I've only built for Linux. If you have a C compiler on Windows, 
-it should compile without any external libraries.
+This will compile under gcc without any libraries. Run via the terminal/command prompt.
 
 Creative Commons Lisence.
